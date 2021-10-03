@@ -6,10 +6,10 @@
 # --- Required options --- #
 
 # Name of website
-title: 홍길동's AI Portfolio
+title: 김성웅's AI Portfolio
 
 # Your name to show in the footer
-author: 홍길동
+author: 김성웅
 
 # --- List of links in the navigation bar --- #
 
@@ -37,9 +37,9 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "help@aischool.ai"
+  email: "rlatjddnd3@gmail.com"
 #  facebook: deanattali
-  github: inflearnaiportfolio
+  github: Seongwoong-sk
 #  twitter: daattali
 #  patreon: DeanAttali
 #  youtube: c/daattali
@@ -76,7 +76,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "inflearnaiportfolio.github.io"
+url-pretty: "seongwoong-sk.github.io"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
 excerpt_length: 50
