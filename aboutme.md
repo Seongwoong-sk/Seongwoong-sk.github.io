@@ -24,7 +24,7 @@ subtitle: 항상 발전을 추구하는 AI Engineer 꿈나무 김성웅입니다
 
     
     
-## Repository
+## Repositories
 ---
 - [Seongwoong-sk/CS231N_17_KOR_SUB](https://github.com/Seongwoong-sk/CS231N_17_KOR_SUB)
 - [Seongwoong-sk/deep_learning_object_detection](https://github.com/Seongwoong-sk/deep_learning_object_detection)
