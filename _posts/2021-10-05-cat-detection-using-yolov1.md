@@ -8,7 +8,7 @@ share-img: /assets/img/yolov1/thumb_nail.png
 tags: [object detection, paper implementation, custom dataset, centernet, tensorflow]
 ---
 
-# Amenity Detection - airbnb 클론 프로젝트
+# Cat Detection - Yolo v1 구현을 통한 Animal Detection 
 
 ## Object Detection 문제영역 소개
 
