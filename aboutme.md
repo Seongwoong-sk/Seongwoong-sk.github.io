@@ -22,7 +22,6 @@ subtitle: 항상 발전을 추구하는 AI Engineer 꿈나무 김성웅입니다
 > ▶ CenterNet을 이용한 Custom Dataset에 대한 Object Detection   
 > ▶ 방 이미지 내에 존재하는 편의용품(Amenity) 검출 
 
-  
     
     
 ## Repository
