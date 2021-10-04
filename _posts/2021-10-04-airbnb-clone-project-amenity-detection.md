@@ -5,7 +5,7 @@ subtitle: Custom Dataset에 대한 Object Detection 프로젝트
 cover-img: /assets/img/amenity_thumb.png
 thumbnail-img: /assets/img/amenity_thumb.png
 share-img: /assets/img/amenity_thumb.png
-tags: [object detection, custom dataset, centernet]
+tags: [object detection, custom dataset, centernet, tensorflow]
 ---
 
 # Amenity Detection - airbnb 클론 프로젝트
