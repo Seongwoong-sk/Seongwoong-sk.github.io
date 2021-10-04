@@ -33,6 +33,5 @@ subtitle: 항상 발전을 추구하는 AI Engineer 꿈나무 김성웅입니다
 - [Seongwoong-sk/Tensorflow-Deep-Learning-Zero-To-All](https://github.com/Seongwoong-sk/Tensorflow-Deep-Learning-Zero-To-All)
 - [Seongwoong-sk/PyTorch-Deep-Learning-Zero-To-All](https://github.com/Seongwoong-sk/PyTorch-Deep-Learning-Zero-To-All)
 - [Seongwoong-sk/Pytorch_First_Step](https://github.com/Seongwoong-sk/Pytorch_First_Step)
-
 - [Seongwoong-sk/Porto-Seguro-s-Safe-Driver-Prediction](https://github.com/Seongwoong-sk/Porto-Seguro-s-Safe-Driver-Prediction)
 - [Seongwoong-sk/Open-Data-Analysis-with-Python](https://github.com/Seongwoong-sk/Open-Data-Analysis-with-Python)
