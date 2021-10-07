@@ -16,7 +16,8 @@ tags: [object detection, yolo_v1, custom dataset, inception-v3 , ensorflow]
 Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 추출과 객체 분류, 두 가지 과정을 거쳐서 객체를 탐지하는 접근법이 아니라 특징 추출과 객체 분류를 한 번에 처리하는 1-stage Detector 접근법을 취합니다.
 
 ![Untitled](../assets/img/yolov1/1stagedetector.png)
-###### 그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)
+
+_그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)_
 
 위 그림에서 보듯이 특징 추출, 객체 분류 두 문제를 단일 신경망으로 해결합니다.
 
@@ -25,6 +26,8 @@ Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 �
 
 ![Untitled](../assets/img/yolov1/yolosystem.png)
 ###### 그림 2 - 논문에 나와있는 YOLO system
+
+<img src="../assets/yolov1/yolosystem.png" width="140" height="200" title="untitled">
 
 두 문제를 한꺼번에 처리를 하여 속도는 빠르지만 정확도는 떨어진다고 논문에서 말하고 있습니다. 이처럼 속도와 정확도의 상충 관계(trade off)가 발생합니다.
 
@@ -48,6 +51,7 @@ Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 �
 
 
 ![Untitled](../assets/img/yolov1/fastrcnn.png)
+
  ###### 그림 4 - Error Analysis between Fast R-CNN and YOLO_v1
 
 ## Bounding Box 예측 방식
