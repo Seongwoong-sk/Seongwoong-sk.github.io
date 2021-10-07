@@ -16,7 +16,7 @@ tags: [object detection, yolo_v1, custom dataset, inception-v3 , ensorflow]
 Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 추출과 객체 분류, 두 가지 과정을 거쳐서 객체를 탐지하는 접근법이 아니라 특징 추출과 객체 분류를 한 번에 처리하는 1-stage Detector 접근법을 취합니다.
 
 ![Untitled](../assets/img/yolov1/1stagedetector.png)
-_그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)_
+###### 그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)
 
 위 그림에서 보듯이 특징 추출, 객체 분류 두 문제를 단일 신경망으로 해결합니다.
 
@@ -25,7 +25,7 @@ _그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)_
 
 ![Untitled](../assets/img/yolov1/yolosystem.png)
 
-_그림 2 - 논문에 나와있는 YOLO system_
+###### 그림 2 - 논문에 나와있는 YOLO system
 
 두 문제를 한꺼번에 처리를 하여 속도는 빠르지만 정확도는 떨어진다고 논문에서 말하고 있습니다. 이처럼 속도와 정확도의 상충 관계(trade off)가 발생합니다.
 
@@ -42,7 +42,7 @@ _그림 2 - 논문에 나와있는 YOLO system_
     
  ![Untitled](../assets/img/yolov1/artwork.png)
  
- _그림 3 - 논문에 나외있는 artwork images_
+ ###### 그림 3 - 논문에 소개된 Artwork Images
 
 3. Fast R-CNN 보다 background error가 두 배이상 적습니다.
     - [x] YOLO는 예측할 때, 이미지 전체를 이용하기 때문에 class와 객체 출현에 대한 contextual information까지 이용할 수 있습니다.
@@ -51,13 +51,13 @@ _그림 2 - 논문에 나와있는 YOLO system_
 
 ![Untitled](../assets/img/yolov1/fastrcnn.png)
  
- _그림 4 - Error Analysis between Fast R-CNN and YOLO_v1_
+ ###### 그림 4 - Error Analysis between Fast R-CNN and YOLO_v1
 
 ## Bounding Box 예측 방식
 
-![Untitled](../assets/img/yolov1/unified.png){: width="30%" height="30%"}
+![Untitled](../assets/img/yolov1/unified.png){: width="60%" height="60%"}
  
- _그림 5 - Yolo_v1 Model Explanation_
+ ###### 그림 5 - Yolo_v1 Model Explanation
 
 YOLO는 object detection의 개별 요소를 하나의 network로 통했습니다. 어떠한 방식으로 작동하는지 알아보도록 하겠습니다.
 
@@ -73,13 +73,13 @@ YOLO는 object detection의 개별 요소를 하나의 network로 통했습니�
 5. 각 grid cell은 바운딩박스 이외에도 class 확률을 예측합니다.
     > 최종적으로 예측값은 (S x S x (B * 5 + C)) 크기의 tensor를 갖습니다. 논문에서는 S = 7, B = 2, C = 20를 사용하여 7 X 7 X 30 tensor를 갖습니다.(Pascal VOC Dataset 기준)
 
-(6) non-max suppression을 거쳐서 최종 바운딩박스를 선정합니다.
+6. non-max suppression을 거쳐서 최종 바운딩박스를 선정합니다.
 
 ## YOLO v1 Architecture
 
 ![Untitled](../assets/img/yolov1/architecture.png)
  
- _그림 6 - Yolo_v1 Model Architecture_
+ ###### 그림 6 - Yolo_v1 Model Architecture
 
 YOLO는 convolutional layer로 이미지로부터 특징을 추출하고, FC layer로 바운딩박스와 class 확률을 예측합니다.
 
@@ -95,7 +95,7 @@ Fast version YOLO의 경우 네트워크에서 convolutional layer의 수를 24�
 
 ![Untitled](../assets/img/yolov1/lossfunction.png)
  
- _그림 7 - Yolo_v1 Loss Function_
+ ###### 그림 7 - Yolo_v1 Loss Function
 
 YOLO는 sum-squared error 를 손실함수로 이용합니다. 이는 다음과 같은 이유로 모델의 불안정성을 발생시켜서 손실 함수를 수정해서 사용합니다.
    - [x] localization error와 classification error를 동등하게 가중치를 주는 것은 비이상적일 수 있습니다.
