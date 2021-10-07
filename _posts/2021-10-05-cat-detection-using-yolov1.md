@@ -10,11 +10,12 @@ tags: [object detection, yolo_v1, custom dataset, inception-v3 , ensorflow]
 
 # Cat Detection - Yolo_v1 모델 구현을 통한 Animal Detection 
 
+이 문서는 Yolo v1 모델에 대한 소개와 Personal Application, 총 2 파트를 다루고 있습니다.
+
 ## Yolo v1 Model
 Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 추출과 객체 분류, 두 가지 과정을 거쳐서 객체를 탐지하는 접근법이 아니라 특징 추출과 객체 분류를 한 번에 처리하는 1-stage Detector 접근법을 취합니다.
 
 ![Untitled](../assets/img/yolov1/1stagedetector.png)
-
 _그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)_
 
 위 그림에서 보듯이 특징 추출, 객체 분류 두 문제를 단일 신경망으로 해결합니다.
