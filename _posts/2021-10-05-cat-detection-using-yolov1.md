@@ -34,6 +34,7 @@ _그림 2 - 논문에 나와있는 YOLO system_
 
 ## 장점
 
+
 1. 매우 빠릅니다.  
     - 초당 45프레임을 처리할 수 있고, fast version에서는 초당 150프레임을 처리할 수 있습니다.
     - 복잡한 pipeline이 필요하지 않고 이미지에 neural netwrok를 실행하기만 하면 됩니다.
@@ -80,10 +81,17 @@ YOLO는 object detection의 개별 요소를 하나의 network로 통했습니�
 
 
 
+
+
 ## YOLO v1 Architecture
+
+
 
 ![Untitled](../assets/img/yolov1/architecture.png)
 _그림 6 - Yolo_v1 Model Architecture_
+
+
+YOLO v1는 Image classification을 위한 GooLeNet 구조에 영감을 받아 해당 네트워크 구조를 설계했습니다. 기존의 GoogLeNet은 Inception module을 사용한 반면에 YOLO v1은 Inception module을 일자로 이어둔 모델을 사용했습니다.
 
 YOLO는 convolutional layer로 이미지로부터 특징을 추출하고, FC layer로 바운딩박스와 class 확률을 예측합니다.
 
@@ -154,12 +162,12 @@ YOLO는 sum-squared error 를 손실함수로 이용합니다. 이는 다음과 
 
 
 YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니다. 학습시에 각 grid cell마다 한 개의 bounding box를 원하기 때문에 bounding boxes 중에서 ground truth와 가장 IoU가 높은 box만 선택해서 학습을 시킵니다. 
-  - 이때 선택된 한 개의 bounding box를 "responsible"이라 할당합니다.      
-
-
+  - 이때 선택된 한 개의 bounding box를 "responsible"이라 할당합니다.  
+  -     
 
 
 ## Model Training explained in the Paper
+
 논문의 저자들은 다음과 같은 방법으로 모델을 학습시켰습니다.
   - Epoch = 135, batch size = 64, momentum = 0.9, decay = 0.0005
   - learning rate scheculing: 첫 epoch에서 10−3로 시작해서 75 epoch까지 10 −2으로 학습시킨다. 이후 30 epochs 동안 10 −3으로 학습하고, 마지막 30 epochs 동안 10−4으로 학습시킵니다.
@@ -170,26 +178,22 @@ YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니�
 
 
 
+# PASCAL VOC Dataset
 
+PASCAL VOC Dataset은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다. 2005년에서 2012년까지 진행되었으며, 그 중 PASCAL 2007과 PASCAL 2012 데이터셋이 벤치마크 데이터셋으로 자주 쓰입니다. PASCAL VOC는 대표적인 **Object Detection 데이터셋** 중 하나입니다. PASCAL VOC Dataset은 20개의 class를 가지고 있습니다.
+본 프로젝트는 이 중 'Cat'만 선택하여 1개의 label을 가지고 학습을 진행했습니다.
 
+> ['Aeroplane','Bicycle','Bird','Boat','Bottle','Bus','Car','Cat','Chair','Cow','Diningtable',
+> 'Dog','Horse','Motorbike','Person','Pottedplant','Sheep','Sofa','Train','Tvmonitor']
 
-
-
-# Pascal VOC Dataset
-
-
-> ['Toilet', 'Swimming pool', 'Bed', 'Billiard table', 'Sink',
-'Fountain', 'Oven', 'Ceiling fan', 'Television', 'Microwave oven',
-'Gas stove', 'Refrigerator', 'Kitchen & dining room table', 'Washing machine', 'Bathtub',
-'Stairs', 'Fireplace', 'Pillow', 'Mirror', 'Shower',
-'Couch', 'Countertop', 'Coffeemaker', 'Dishwasher', 'Sofa bed',
-'Tree house', 'Towel', 'Porch', 'Wine rack', 'Jacuzzi']
-
+본 프로젝트에서는 PASCAL VOC 2007년 데이터셋의 Train 데이터의 개수가 적은 것을 고려하여 2007과 2012년 데이터셋을 혼합하여 학습에 사용하였습니다.
+- **Train** 데이터로는 2007 Test (4,952 images) + 2012 Train (5,717 images), 총 10,669장을 사용했습니다.
+- **Validation** 데이터로는 2007 Validation (2,510 images), 총 2,510장을 사용했습니다.
+- **Test** 데이터로는 2007 Train (2,501 images), 총 2,501장을 사용했습니다.
 
 
 # Training
-
-
+원 논문에서는 darknet 자체 프레임워크로 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 Inception-v3 모델을 이용해서 총 6,950 step의 트레이닝을 진행했습니다.
 
 # Evaluation
 
