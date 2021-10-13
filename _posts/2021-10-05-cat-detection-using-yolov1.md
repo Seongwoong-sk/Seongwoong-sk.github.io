@@ -26,6 +26,7 @@ _그림 1 - 1-stage Detector의 전체적인 구조 (출처:hoya012.github.io)_
 > Yolo v1은 single convolutional network로 이미지를 입력받아, 각 박스의 class, 여러 개의 바운딩 박스와 박스의 위치 정보를 예측합니다. 그리고 non-max suppression을 통해 최종 바운딩박스를 선정합니다. 
 
 ![Untitled](../assets/img/yolov1/yolosystem.png)
+
 _그림 2 - 논문에 나와있는 YOLO system_
 
 
@@ -45,7 +46,8 @@ _그림 2 - 논문에 나와있는 YOLO system_
     - 자연 이미지(natural image)로 학습한 후 그림(artwork)에서 test를 진행해도 다른 모델들 보다 좋은 성능을 보인다고 논문에서는 말하고 있습니다.
     
  ![Untitled](../assets/img/yolov1/artwork.png)
- _그림 3 - 논문에 소개된 Artwork Images_
+ _그림 3 - 논문에 소개된 Artwork Images_  
+
 
 3. Fast R-CNN 보다 background error가 두 배이상 적습니다.
     - YOLO는 예측할 때, 이미지 전체를 이용하기 때문에 class와 객체 출현에 대한 contextual information까지 이용할 수 있습니다.
@@ -93,7 +95,7 @@ _그림 6 - Yolo_v1 Model Architecture_
 
 YOLO v1는 Image classification을 위한 GooLeNet 구조에 영감을 받아 해당 네트워크 구조를 설계했습니다. 기존의 GoogLeNet은 Inception module을 사용한 반면에 YOLO v1은 Inception module을 일자로 이어둔 모델을 사용했습니다.
 
-YOLO는 convolutional layer로 이미지로부터 특징을 추출하고, FC layer로 바운딩박스와 class 확률을 예측합니다.
+YOLO는 convolutional layer로 이미지로부터 특징을 추출하고, FC layer로 Bounding box와 class 확률을 예측합니다.
 
 YOLO는 24개의 convolutional layer와 2개의 fully connected layer로 이루어져 있습니다. 
 
@@ -163,16 +165,42 @@ YOLO는 sum-squared error 를 손실함수로 이용합니다. 이는 다음과 
 
 YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니다. 학습시에 각 grid cell마다 한 개의 bounding box를 원하기 때문에 bounding boxes 중에서 ground truth와 가장 IoU가 높은 box만 선택해서 학습을 시킵니다. 
   - 이때 선택된 한 개의 bounding box를 "responsible"이라 할당합니다.  
-  -     
+ 
+ 
 
-
-## Model Training explained in the Paper
+## Comparison Hyperparmeters between Original Paper and Custom when Training 
 
 논문의 저자들은 다음과 같은 방법으로 모델을 학습시켰습니다.
-  - Epoch = 135, batch size = 64, momentum = 0.9, decay = 0.0005
-  - learning rate scheculing: 첫 epoch에서 10−3로 시작해서 75 epoch까지 10 −2으로 학습시킨다. 이후 30 epochs 동안 10 −3으로 학습하고, 마지막 30 epochs 동안 10−4으로 학습시킵니다.
-  - overfitting을 막기 위해 dropout과 data augmentation을 활용했습니다.
+  - **Basic**
+    - Epoch = 135, batch_size = 64, input_width = 448, input_height = 448, num_classes = 20
+  - **Loss_function**
+    - coord_scale : 5
+    - noobj_scale : 0.5
+    - obj_scale : 1
+  - **Optimizer**
+    - SGD(Stochastic Gradient Descent) with momentum = 0.9, 
+    - decay = 0.0005
+  - **Learning rate Scheduling**
+    - 0.001 [1 epoch] --> 0.01 [75 epochs] --> 0.001 [30 epochs] --> 0.0001 [30 epochs]
+  - Overfitting을 막기 위해 **Dropout**과 **Data Augmentation**을 활용했습니다.
 
+
+저는 제 학습 환경의 성능과 목적을 고려하여 다음과 같은 방법으로 모델을 학습시켰습니다.
+  - **Basic**
+      - Batch_size = 24, input_width = 224, input_height = 224, num_classes = 1 (Cat)
+  - **Loss_function**
+    - coord_scale : 10
+    - noojb_scale : 0.1
+    - obj_scale : 0.5
+    - class_scale = 0.1 (원 논문에는 없었지만 클래스의 자유도를 위해 생성)
+  - **Optimizer**
+    - Adam
+  - **Learing rate Scheduling** 
+    - 초기 learning rate를 0.0001로 설정하고 lr_decay_rate를 0.5로 지정해 2,000 steps마다 1/2씩 감소
+  
+  
+      
+      
 학습을 마친 YOLO 모델은 PASCAL VOC의 이미지에 대해 각각 98개의 bounding boxes를 출력합니다. 이렇게 나온 98개의 bounding boxes들에 대해 NMS(Nom-Maximum Suprression)을 적용합니다.
 
 
