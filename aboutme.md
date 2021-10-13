@@ -18,13 +18,13 @@ subtitle: 항상 발전을 추구하는 AI Engineer 꿈나무 김성웅입니다
    
 ## Portfolioes
 ---
-**Amenity Detection Project** ([링크](https://inflearnaiportfolio.github.io/2021-07-05-airbnb-clone-project-amenity-detection/)) 
-▶ CenterNet을 이용한 Custom Dataset에 대한 Object Detection   
-▶ 방 이미지 내에 존재하는 편의용품(Amenity) 검출 
+**Amenity Detection Project** ([링크](https://inflearnaiportfolio.github.io/2021-07-05-airbnb-clone-project-amenity-detection/))   
+- CenterNet을 이용한 Custom Dataset에 대한 Object Detection    
+- 방 이미지 내에 존재하는 편의용품(Amenity) 검출 
 
-**Cat Detection with Yolo v1** ([링크](https://seongwoong-sk.github.io/2021-10-05-cat-detection-using-yolov1/)) 
-▶ Inception-V3을 이용한 Parsed Pascal VOC Dataset에 대한 Object Detection   
-▶ 이미지 내에 존재하는 고양이(Cat) 검출
+**Cat Detection with Yolo v1** ([링크](https://seongwoong-sk.github.io/2021-10-05-cat-detection-using-yolov1/))   
+- Inception-V3을 이용한 Parsed Pascal VOC Dataset에 대한 Object Detection   
+- 이미지 내에 존재하는 고양이(Cat) 검출
 
     
     
