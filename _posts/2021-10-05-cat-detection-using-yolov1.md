@@ -240,7 +240,7 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 
 
 **일반적인 검출**
-
+- 일반적으로 잘 검출합니다.
 
 ![Untitled](../assets/img/yolov1/142_result.png)
 ![Untitled](../assets/img/yolov1/20_result.png)
@@ -248,19 +248,18 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 
 **여러 마리의 고양이**
 
-
 - Yolo의 알고리즘 상 Confidence Score가 가장 높은 Bounding box 1개로 검출하기 때문에 고양이가 여러 마리여도 Bounding box가 1개만 형성됩니다.
 ![Untitled](../assets/img/yolov1/19_result.png)
 ![Untitled](../assets/img/yolov1/29_result.png)
 
 **크기가 작은 고양이 검출**
-
+- 크기에 비례해 Bounding box가 형성되지 못하는 모습입니다.
 
 ![Untitled](../assets/img/yolov1/9_result.png)
 ![Untitled](../assets/img/yolov1/146_result.png)
 
 **크기가 큰 고양이 검출**
-
+- 크기에 비례해 Bounding box가 형성되지 못하는 모습입니다.
 
 ![Untitled](../assets/img/yolov1/77_result.png)
 ![Untitled](../assets/img/yolov1/155_result.png)
@@ -270,15 +269,17 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 # Future Work
 
 위의 예시에서 볼 수 있듯이 Confidence Score가 학습량에 비례해서 높게 나오지 않고, 고양이 마리 수에 비례해 bounding box 형성이 안되고, Input_size를 작게 설정해서 학습한 결과, 고양이의 크기가 크게 나오는 이미지에서는 고양이의 크기에 비례한 Bounding box 형성이 안되는 모습을 볼 수 있습니다.   
+
+
 이러한 문제에 대한 이유는 여러 가지가 있을 수 있지만,  크기, 색깔, 종 등 다양한 특성을 가진 고양이들을 학습하기에 학습데이터의 양이 불충분했던 점을 주요 원인 중 하나로 볼 수 있습니다. 따라서 다양한 고양이 이미지들을 더 수집한 후, Training을 진행하는 과정을 통해 Confidence Score를 향상시키고 고양이 크기에 비례한 Bounding box 형성을 시도해볼 계획입니다.
 
 # References
 
-[1] https://arxiv.org/abs/1506.02640
-[2] https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf
-[3] https://pjreddie.com/projects/pascal-voc-dataset-mirror/
-[4] https://pjreddie.com/media/files/VOC2012_doc.pdf
-[5] https://pjreddie.com/media/files/VOC2012_doc.pdf
-[6] https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Szegedy_Rethinking_the_Inception_CVPR_2016_paper.pdf
-[7] https://velog.io/@skhim520/YOLO-v1-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-%EB%B0%8F-%EC%BD%94%EB%93%9C-%EA%B5%AC%ED%98%84
+[1] https://arxiv.org/abs/1506.02640  
+[2] https://www.cvfoundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf  
+[3] https://pjreddie.com/projects/pascal-voc-dataset-mirror/  
+[4] https://pjreddie.com/media/files/VOC2012_doc.pdf  
+[5] https://pjreddie.com/media/files/VOC2012_doc.pdf  
+[6] https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Szegedy_Rethinking_the_Inception_CVPR_2016_paper.pdf  
+[7] https://velog.io/@skhim520/YOLO-v1-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-%EB%B0%8F-%EC%BD%94%EB%93%9C-%EA%B5%AC%ED%98%84  
 
