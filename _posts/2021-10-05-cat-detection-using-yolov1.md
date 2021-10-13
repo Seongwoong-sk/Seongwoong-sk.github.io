@@ -10,11 +10,11 @@ tags: [object detection, yolo_v1, custom dataset, inception-v3 , ensorflow]
 
 # Cat Detection - Yolo_v1 모델 구현을 통한 Animal Detection 
 
-이 문서는 Yolo v1 모델에 대한 소개와 Personal Application, 총 2 파트를 다루고 있습니다.
+이 문서는 Yolo v1 모델에 대한 소개[7]와 Personal Application, 총 2 파트를 다루고 있습니다.
 
 ## Yolo v1 Model
 
-Yolo v1은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 추출과 객체 분류, 두 가지 과정을 거쳐서 객체를 탐지하는 접근법이 아니라 특징 추출과 객체 분류를 한 번에 처리하는 1-stage Detector 접근법을 취합니다.
+**Yolo v1[1]**은 논문에서 소개한 2-Stage Detector (DPM, R-CNN) 같이 특징 추출과 객체 분류, 두 가지 과정을 거쳐서 객체를 탐지하는 접근법이 아니라 특징 추출과 객체 분류를 한 번에 처리하는 1-stage Detector 접근법을 취합니다.
 
 ![Untitled](../assets/img/yolov1/1stagedetector.png)
 
@@ -93,7 +93,7 @@ YOLO는 object detection의 개별 요소를 하나의 network로 통했습니�
 _그림 6 - Yolo_v1 Model Architecture_
 
 
-YOLO v1는 Image classification을 위한 GooLeNet 구조에 영감을 받아 해당 네트워크 구조를 설계했습니다. 기존의 GoogLeNet은 Inception module을 사용한 반면에 YOLO v1은 Inception module을 일자로 이어둔 모델을 사용했습니다.
+YOLO v1는 Image classification을 위한 GooLeNet[2] 구조에 영감을 받아 해당 네트워크 구조를 설계했습니다. 기존의 GoogLeNet은 Inception module을 사용한 반면에 YOLO v1은 Inception module을 일자로 이어둔 모델을 사용했습니다.
 
 YOLO는 convolutional layer로 이미지로부터 특징을 추출하고, FC layer로 Bounding box와 class 확률을 예측합니다.
 
@@ -208,13 +208,13 @@ YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니�
 
 # PASCAL VOC Dataset
 
-PASCAL VOC Dataset은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다. 2005년에서 2012년까지 진행되었으며, 그 중 PASCAL 2007과 PASCAL 2012 데이터셋이 벤치마크 데이터셋으로 자주 쓰입니다. PASCAL VOC는 대표적인 **Object Detection 데이터셋** 중 하나입니다. PASCAL VOC Dataset은 20개의 class를 가지고 있습니다.
+PASCAL VOC Dataset[3]은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다. 2005년에서 2012년까지 진행되었으며, 그 중 PASCAL 2007[4]과 PASCAL 2012[5] 데이터셋이 벤치마크 데이터셋으로 자주 쓰입니다. PASCAL VOC는 대표적인 **Object Detection 데이터셋** 중 하나입니다. PASCAL VOC Dataset은 20개의 class를 가지고 있습니다.
 본 프로젝트는 이 중 'Cat'만 선택하여 1개의 label을 가지고 학습을 진행했습니다.
 
 > ['Aeroplane','Bicycle','Bird','Boat','Bottle','Bus','Car','Cat','Chair','Cow','Diningtable',
 > 'Dog','Horse','Motorbike','Person','Pottedplant','Sheep','Sofa','Train','Tvmonitor']
 
-본 프로젝트에서는 PASCAL VOC 2007년 데이터셋의 Train 데이터의 개수가 적은 것을 고려하여 2007과 2012년 데이터셋을 혼합하여 학습에 사용하였습니다.
+본 프로젝트에서는 PASCAL VOC 2007년 데이터셋의 Train 데이터의 개수가 적은 것을 고려하여 2007년과 2012년 데이터셋을 혼합하여 학습에 사용하였습니다.
 
 - **Train** 데이터로는 2007 Test (4,952 images) + 2012 Train (5,717 images), **총 10,669장**을 사용했습니다.
 - **Validation** 데이터로는 2007 Validation (2,510 images), **총 2,510장**을 사용했습니다.
@@ -222,10 +222,12 @@ PASCAL VOC Dataset은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다
 
 
 # Training & Evaluation
-원 논문에서는 Darknet 자체 프레임워크에서 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 **Inception-v3 모델**과 Tensorflow 프레임워크에서 최종적으로 총 5,700 steps의 Training과 8,300 steps의 Validation을 진행했습니다. 
+원 논문에서는 Darknet 자체 프레임워크에서 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 **Inception-v3 모델[6]**과 Tensorflow 프레임워크에서 최종적으로 총 5,700 steps의 Training과 8,300 steps의 Validation을 진행했습니다. 
 
 
 ![Untitled](../assets/img/yolov1/Training.png)
+
+_그림 8 - Training & Evaluation 과정에 대한 Tensorboard 스크린샷_
 
 
 Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행할수록 일반화된 성능이 점진적으로 향상되는 과정을 확인할 수 있었습니다.
@@ -238,28 +240,45 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 
 
 **일반적인 검출**
+
+
 ![Untitled](../assets/img/yolov1/142_result.png)
 ![Untitled](../assets/img/yolov1/20_result.png)
 ![Untitled](../assets/img/yolov1/55_result.png)
 
 **여러 마리의 고양이**
+
+
 - Yolo의 알고리즘 상 Confidence Score가 가장 높은 Bounding box 1개로 검출하기 때문에 고양이가 여러 마리여도 Bounding box가 1개만 형성됩니다.
 ![Untitled](../assets/img/yolov1/19_result.png)
 ![Untitled](../assets/img/yolov1/29_result.png)
 
 **크기가 작은 고양이 검출**
+
+
 ![Untitled](../assets/img/yolov1/9_result.png)
 ![Untitled](../assets/img/yolov1/146_result.png)
 
 **크기가 큰 고양이 검출**
+
+
 ![Untitled](../assets/img/yolov1/77_result.png)
 ![Untitled](../assets/img/yolov1/155_result.png)
 
 
+
 # Future Work
+
 위의 예시에서 볼 수 있듯이 Confidence Score가 학습량에 비례해서 높게 나오지 않고, 고양이 마리 수에 비례해 bounding box 형성이 안되고, Input_size를 작게 설정해서 학습한 결과, 고양이의 크기가 크게 나오는 이미지에서는 고양이의 크기에 비례한 Bounding box 형성이 안되는 모습을 볼 수 있습니다.   
 이러한 문제에 대한 이유는 여러 가지가 있을 수 있지만,  크기, 색깔, 종 등 다양한 특성을 가진 고양이들을 학습하기에 학습데이터의 양이 불충분했던 점을 주요 원인 중 하나로 볼 수 있습니다. 따라서 다양한 고양이 이미지들을 더 수집한 후, Training을 진행하는 과정을 통해 Confidence Score를 향상시키고 고양이 크기에 비례한 Bounding box 형성을 시도해볼 계획입니다.
 
 # References
 
-[1] 
+[1] https://arxiv.org/abs/1506.02640
+[2] https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf
+[3] https://pjreddie.com/projects/pascal-voc-dataset-mirror/
+[4] https://pjreddie.com/media/files/VOC2012_doc.pdf
+[5] https://pjreddie.com/media/files/VOC2012_doc.pdf
+[6] https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Szegedy_Rethinking_the_Inception_CVPR_2016_paper.pdf
+[7] https://velog.io/@skhim520/YOLO-v1-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-%EB%B0%8F-%EC%BD%94%EB%93%9C-%EA%B5%AC%ED%98%84
+
