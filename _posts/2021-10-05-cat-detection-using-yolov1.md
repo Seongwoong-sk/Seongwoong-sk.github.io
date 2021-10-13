@@ -288,9 +288,9 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 
 [3] [https://pjreddie.com/projects/pascal-voc-dataset-mirror/](https://pjreddie.com/projects/pascal-voc-dataset-mirror/)   
 
-[4] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)   
-[5] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)    
-[6] [https://ieeexplore.ieee.org/document/7780677](https://ieeexplore.ieee.org/document/7780677)
+[4] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)    
+[5] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)      
+[6] [https://ieeexplore.ieee.org/document/7780677](https://ieeexplore.ieee.org/document/7780677)  
 
 [7] [https://velog.io/@skhim520/YOLO-v1-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-%EB%B0%8F-%EC%BD%94%EB%93%9C-%EA%B5%AC%ED%98%84](https://velog.io/@skhim520/YOLO-v1-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-%EB%B0%8F-%EC%BD%94%EB%93%9C-%EA%B5%AC%ED%98%84)
 
