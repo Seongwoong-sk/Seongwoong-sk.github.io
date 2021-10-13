@@ -36,12 +36,12 @@ _그림 2 - 논문에 나와있는 YOLO system_
 ## 장점
 
 
-1. 매우 빠릅니다.  
+- 매우 빠릅니다.  
     - 초당 45프레임을 처리할 수 있고, fast version에서는 초당 150프레임을 처리할 수 있습니다.
     - 복잡한 pipeline이 필요하지 않고 이미지에 neural netwrok를 실행하기만 하면 됩니다.
     - 추가적으로 YOLO는 실시간 객체 탐지 방법보다 2배 이상의 mAP(mean average precision)을 얻었다고 논문에서 말하고 있습니다.
 
-2. 객체의 일반화된 representations를 학습하여 다르 도메인에서 좋은 성능을 보입니다.
+- 객체의 일반화된 representations를 학습하여 다르 도메인에서 좋은 성능을 보입니다.
     - 새로운 이미지나 새로운 도메인에 적용할 때, DPM, R-CNN 같은 detection 방법을 크게 능가합니다.
     - 자연 이미지(natural image)로 학습한 후 그림(artwork)에서 test를 진행해도 다른 모델들 보다 좋은 성능을 보인다고 논문에서는 말하고 있습니다.
     
@@ -49,7 +49,7 @@ _그림 2 - 논문에 나와있는 YOLO system_
  _그림 3 - 논문에 소개된 Artwork Images_  
 
 
-3. Fast R-CNN 보다 background error가 두 배이상 적습니다.
+- Fast R-CNN 보다 background error가 두 배이상 적습니다.
     - YOLO는 예측할 때, 이미지 전체를 이용하기 때문에 class와 객체 출현에 대한 contextual information까지 이용할 수 있습니다.
     - 반면에 Fast R-CNN은 selective search가 제안한 영역만을 이용하여 예측하기 때문에 larger context를 이용하지 못합니다.따라서 R-CNN은 배경을 객체로 탐지하는 실수를 하게 됩니다.
 
@@ -187,7 +187,7 @@ YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니�
 
 저는 제 학습 환경의 성능과 목적을 고려하여 다음과 같은 방법으로 모델을 학습시켰습니다.
   - **Basic**
-      - Batch_size = 24, input_width = 224, input_height = 224, num_classes = 1 (Cat)
+      - Epoch = 135, Batch_size = 24, input_width = 224, input_height = 224, num_classes = 1
   - **Loss_function**
     - coord_scale : 10
     - noojb_scale : 0.1
@@ -197,7 +197,7 @@ YOLO는 여러 개의 bounding boxes를 각각의 grid cell에서 예측합니�
     - Adam
   - **Learing rate Scheduling** 
     - 초기 learning rate를 0.0001로 설정하고 lr_decay_rate를 0.5로 지정해 2,000 steps마다 1/2씩 감소
-  
+  - Overfitting을 막기 위해 **Dropout**과 **Data Augmentation**을 활용했습니다.
   
       
       
@@ -215,13 +215,14 @@ PASCAL VOC Dataset은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다
 > 'Dog','Horse','Motorbike','Person','Pottedplant','Sheep','Sofa','Train','Tvmonitor']
 
 본 프로젝트에서는 PASCAL VOC 2007년 데이터셋의 Train 데이터의 개수가 적은 것을 고려하여 2007과 2012년 데이터셋을 혼합하여 학습에 사용하였습니다.
+
 - **Train** 데이터로는 2007 Test (4,952 images) + 2012 Train (5,717 images), 총 10,669장을 사용했습니다.
 - **Validation** 데이터로는 2007 Validation (2,510 images), 총 2,510장을 사용했습니다.
 - **Test** 데이터로는 2007 Train (2,501 images), 총 2,501장을 사용했습니다.
 
 
 # Training
-원 논문에서는 darknet 자체 프레임워크로 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 Inception-v3 모델을 이용해서 총 6,950 step의 트레이닝을 진행했습니다.
+원 논문에서는 Darknet 자체 프레임워크에서 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 **Inception-v3 모델**과 Tensorflow 프레임워크에서 총 8,300 steps의 트레이닝을 진행했습니다.
 
 # Evaluation
 
