@@ -216,23 +216,49 @@ PASCAL VOC Dataset은 PASCAL VOC challenge에서 쓰이던 데이터셋입니다
 
 본 프로젝트에서는 PASCAL VOC 2007년 데이터셋의 Train 데이터의 개수가 적은 것을 고려하여 2007과 2012년 데이터셋을 혼합하여 학습에 사용하였습니다.
 
-- **Train** 데이터로는 2007 Test (4,952 images) + 2012 Train (5,717 images), 총 10,669장을 사용했습니다.
-- **Validation** 데이터로는 2007 Validation (2,510 images), 총 2,510장을 사용했습니다.
-- **Test** 데이터로는 2007 Train (2,501 images), 총 2,501장을 사용했습니다.
+- **Train** 데이터로는 2007 Test (4,952 images) + 2012 Train (5,717 images), **총 10,669장**을 사용했습니다.
+- **Validation** 데이터로는 2007 Validation (2,510 images), **총 2,510장**을 사용했습니다.
+- **Test** 데이터로는 2007 Train (2,501 images), **총 2,501장**을 사용했습니다.
 
 
-# Training
-원 논문에서는 Darknet 자체 프레임워크에서 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 **Inception-v3 모델**과 Tensorflow 프레임워크에서 총 8,300 steps의 트레이닝을 진행했습니다.
-
-# Evaluation
+# Training & Evaluation
+원 논문에서는 Darknet 자체 프레임워크에서 GoogLeNet과 비슷한 layer를 직접 정의해서 학습을 시켰습니다. 그래서 저는 GoogLeNet과 비슷한 **Inception-v3 모델**과 Tensorflow 프레임워크에서 최종적으로 총 5,700 steps의 Training과 8,300 steps의 Validation을 진행했습니다. 
 
 
+![Untitled](../assets/img/yolov1/Training.png)
+
+
+Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행할수록 일반화된 성능이 점진적으로 향상되는 과정을 확인할 수 있었습니다.
+
+# Test
+
+8,300 steps의 트레이닝 이후 Test 데이터셋으로 사용한 Pascal VOC 2007 Train의 2,501장의 이미지를 테스트 데이터로 활용했습니다. 총 2,501장의 이미지 중, 고양이가 담긴 이미지는 총 166장이여서 **166장의 이미지**를 가지고 테스트를 진행했습니다.
+
+결과는 다음과 같습니다.
+
+
+**일반적인 검출**
+![Untitled](../assets/img/yolov1/142_result.png)
+![Untitled](../assets/img/yolov1/20_result.png)
+![Untitled](../assets/img/yolov1/55_result.png)
+
+**여러 마리의 고양이**
+- Yolo의 알고리즘 상 Confidence Score가 가장 높은 Bounding box 1개로 검출하기 때문에 고양이가 여러 마리여도 Bounding box가 1개만 형성됩니다.
+![Untitled](../assets/img/yolov1/19_result.png)
+![Untitled](../assets/img/yolov1/29_result.png)
+
+**크기가 작은 고양이 검출**
+![Untitled](../assets/img/yolov1/9_result.png)
+![Untitled](../assets/img/yolov1/146_result.png)
+
+**크기가 큰 고양이 검출**
+![Untitled](../assets/img/yolov1/77_result.png)
+![Untitled](../assets/img/yolov1/155_result.png)
 
 
 # Future Work
-
-
-
+위의 예시에서 볼 수 있듯이 Confidence Score가 학습량에 비례해서 높게 나오지 않고, 고양이 마리 수에 비례해 bounding box 형성이 안되고, Input_size를 작게 설정해서 학습한 결과, 고양이의 크기가 크게 나오는 이미지에서는 고양이의 크기에 비례한 Bounding box 형성이 안되는 모습을 볼 수 있습니다.   
+이러한 문제에 대한 이유는 여러 가지가 있을 수 있지만,  크기, 색깔, 종 등 다양한 특성을 가진 고양이들을 학습하기에 학습데이터의 양이 불충분했던 점을 주요 원인 중 하나로 볼 수 있습니다. 따라서 다양한 고양이 이미지들을 더 수집한 후, Training을 진행하는 과정을 통해 Confidence Score를 향상시키고 고양이 크기에 비례한 Bounding box 형성을 시도해볼 계획입니다.
 
 # References
 
