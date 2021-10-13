@@ -288,7 +288,7 @@ Total Loss와 Validation loss가 지속적으로 감소해서 학습을 진행�
 
 [3] [https://pjreddie.com/projects/pascal-voc-dataset-mirror/](https://pjreddie.com/projects/pascal-voc-dataset-mirror/)   
 
-[4] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)    
+[4] [https://pjreddie.com/media/files/VOC2007_doc.pdf](https://pjreddie.com/media/files/VOC2007_doc.pdf)    
 
 [5] [https://pjreddie.com/media/files/VOC2012_doc.pdf](https://pjreddie.com/media/files/VOC2012_doc.pdf)      
 
