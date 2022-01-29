@@ -18,7 +18,7 @@ subtitle: 항상 발전을 추구하는 AI Engineer 김성웅입니다.
    
 # Portfolioes
 ---
-**✌ Amenity Detection Project** ([링크](https://inflearnaiportfolio.github.io/2021-07-05-airbnb-clone-project-amenity-detection/))   
+**✌ Amenity Detection Project** ([링크](https://seongwoong-sk.github.io/2021-10-04-airbnb-clone-project-amenity-detection/))   
 - CenterNet을 이용한 Custom Dataset에 대한 Object Detection    
 - 방 이미지 내에 존재하는 편의용품(Amenity) 검출 
 
